@@ -3,12 +3,16 @@ import database  # Import data from separate file
 
 app = Flask(__name__)
 
+# assimilation
+def normalize_string(s):
+    return s.strip().lower().replace("-"," ")
+
 # Get all items
 @app.route("/items", methods=["GET"])
 def get_items():
     return jsonify(database.data), 200
 
-# Get a single item
+# Get a single item by id
 @app.route("/items/<int:item_id>", methods=["GET"])
 def get_item(item_id):
     item = next((i for i in database.data if i["id"] == item_id), None)
@@ -16,26 +20,36 @@ def get_item(item_id):
         return jsonify(item), 200
     return jsonify({"error": "Item not found"}), 404
 
-# Get items by tag
-@app.route("/items/tag/<string:tag>", methods=["GET"])
+# Get items by project
+@app.route("/items/project/<string:tag>", methods=["GET"])
 def get_items_by_tag(tag):
-    filtered_items = [item for item in database.data if tag.lower() in [t.lower() for t in item["tags"]]]
+    filtered_items = [item for item in database.data if tag.lower() in [t.lower() for t in item["projects"]]]
     if filtered_items:
         return jsonify(filtered_items), 200
-    return jsonify({"error": "No items found with this tag"}), 404
+    return jsonify({"error": "No items found with this project"}), 404
 
-# Get items that are active
-@app.route("/items/active", methods=["GET"])
-def get_active_items():
-    active_items = [item for item in database.data if item["active"]]
-    if active_items:
-        return jsonify(active_items), 200
-    return jsonify({"error": "No active items found"}), 404
+# Get items that are serif
+@app.route("/items/serif", methods=["GET"])
+def get_serif_items():
+    serif_items = [item for item in database.data if item["serif"]]
+    if serif_items:
+        return jsonify(serif_items), 200
+    return jsonify({"error": "No serif items found"}), 404
 
-# Get items that are inactive (active = False)
-@app.route("/items/inactive", methods=["GET"])
-def get_inactive_items():
-    inactive_items = [item for item in database.data if not item["active"]]  # Check for False
-    if inactive_items:
-        return jsonify(inactive_items), 200
-    return jsonify({"error": "No inactive items found"}), 404
+# Get items by name (case and spacing insensitive)
+@app.route("/items/name/<string:name>", methods=["GET"])
+def get_by_name(name):
+    normalized_name = normalize_string(name)
+    filtered_items = [item for item in database.data if normalize_string(item["name"]) == normalized_name]
+    if filtered_items:
+        return jsonify(filtered_items), 200
+    return jsonify({"error": "Item with this name not found"}), 404
+
+# Get items by family (case and spacing insensitive)
+@app.route("/items/family/<string:family>", methods=["GET"])
+def get_by_family(family):
+    normalized_family = normalize_string(family)
+    filtered_items = [item for item in database.data if normalize_string(item["family"]) == normalized_family]
+    if filtered_items:
+        return jsonify(filtered_items), 200
+    return jsonify({"error": "Item with this family not found"}), 404
