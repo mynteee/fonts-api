@@ -53,3 +53,9 @@ def get_by_family(family):
     if filtered_items:
         return jsonify(filtered_items), 200
     return jsonify({"error": "Item with this family not found"}), 404
+
+# Get a random item
+@app.route("/items/random", methods=["GET"])
+def get_random_item():
+    random_item = random.choice(database.data)  # Randomly select an item from data
+    return jsonify(random_item), 200
