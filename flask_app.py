@@ -16,12 +16,26 @@ def get_item(item_id):
         return jsonify(item), 200
     return jsonify({"error": "Item not found"}), 404
 
-# Add a new item (not persistent)
-@app.route("/items", methods=["POST"])
-def create_item():
-    new_item = request.json
-    if "name" not in new_item:
-        return jsonify({"error": "Missing 'name' field"}), 400
-    new_item["id"] = max(i["id"] for i in database.data) + 1 if database.data else 1
-    database.data.append(new_item)
-    return jsonify(new_item), 201
+# Get items by tag
+@app.route("/items/tag/<string:tag>", methods=["GET"])
+def get_items_by_tag(tag):
+    filtered_items = [item for item in database.data if tag.lower() in [t.lower() for t in item["tags"]]]
+    if filtered_items:
+        return jsonify(filtered_items), 200
+    return jsonify({"error": "No items found with this tag"}), 404
+
+# Get items that are active
+@app.route("/items/active", methods=["GET"])
+def get_active_items():
+    active_items = [item for item in database.data if item["active"]]
+    if active_items:
+        return jsonify(active_items), 200
+    return jsonify({"error": "No active items found"}), 404
+
+# Get items that are inactive (active = False)
+@app.route("/items/inactive", methods=["GET"])
+def get_inactive_items():
+    inactive_items = [item for item in database.data if not item["active"]]  # Check for False
+    if inactive_items:
+        return jsonify(inactive_items), 200
+    return jsonify({"error": "No inactive items found"}), 404
