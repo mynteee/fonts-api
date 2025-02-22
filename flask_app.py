@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request
 import random
 import database  # Import data from separate file
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # assimilation
 def normalize_string(s):
@@ -36,6 +38,14 @@ def get_serif_items():
     if serif_items:
         return jsonify(serif_items), 200
     return jsonify({"error": "No serif items found"}), 404
+
+# Get items that are sans-serif
+@app.route("/items/sans-serif", methods=["GET"])
+def get_sans_serif_items():
+    sans_serif_items = [item for item in database.data if not item["serif"]]
+    if sans_serif_items:
+        return jsonify(sans_serif_items), 200
+    return jsonify({"error": "No sans-serif items found"}), 404
 
 # Get items by name (case and spacing insensitive)
 @app.route("/items/name/<string:name>", methods=["GET"])
