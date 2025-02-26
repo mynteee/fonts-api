@@ -1,5 +1,5 @@
 # fonts api
-trying to build a web api
+learning to build a web api
 
 ## features
 - FREEEEEEEEE
@@ -9,12 +9,13 @@ trying to build a web api
     - name
     - family
     - projects
-    - serif
+    - (sans)serif
+    - random
 - will hopefully turn this into a gallery on my [website](https://mynteee.github.io/) eventually
 - possible images and otf/files coming if i feel like it
 
 ## use
-go to [https://mynte.pythonanywhere.com/items](https://mynte.pythonanywhere.com/items). this will return the entire database. from here you can sort to whatever is your use case is by adding the appropriate subpath and parameters which can be found below.
+go to [https://mynte.pythonanywhere.com/items](https://mynte.pythonanywhere.com/items). this will return the entire database. from here you can sort to whatever is your use case is by appending the appropriate subpath to the link above and parameters which can be found below. if ur still confused just read the code lol.
 
 ### 1. id 
 **/[id]** where **[id]** is some whole number (probably) that i assigned to the font and has no real meaning otherwise will return the font with that id
@@ -32,6 +33,6 @@ go to [https://mynte.pythonanywhere.com/items](https://mynte.pythonanywhere.com/
 **/random** will get you a random font
 
 ## contributing
-just make a pull request and if its a cool font why not or if you do something else cool that nice too \
+just make a pull request and if its a cool font why not or if you do something else cool thats nice too \
 \
 thanks for reading have fun
