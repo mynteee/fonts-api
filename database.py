@@ -11,11 +11,17 @@ entry explanations
 '''
 
 data = [
-    {"id": 0,   "name": "sample font",    "family": "sample family",  "projects": ["project1", "project2", "project3"],                           "serif": None   }, # sample entry
-    {"id": 1,   "name": "Bebas Neue",     "family": "sans-serif",     "projects": ["ows"],                                                        "serif": False  },
-    {"id": 2,   "name": "Magilio",        "family": "serif",          "projects": ["cards", "check-please-program", "check-please-shirt"],        "serif": True   },
-    {"id": 3,   "name": "Copperplate",    "family": "serif",          "projects": ["da-program", "shad-ticket"],                                  "serif": True   },
-    {"id": 4,   "name": "Laxero",         "family": "sans-serif",     "projects": ["da-poster", "da-shirt"],                                      "serif": False  },
-    {"id": 5,   "name": "College",        "family": "serif",          "projects": ["xc-shirt"],                                                   "serif": True   },
-    {"id": 6,   "name": "Blackriver",     "family": "sans-serif",     "projects": ["name"],                                                       "serif": False  },
+    {"id": 0,   "name": "sample font",            "family": "sample family",  "projects": ["project1", "project2", "project3"],                           "serif": None   }, # sample entry
+    {"id": 1,   "name": "Bebas Neue",             "family": "sans-serif",     "projects": ["ows"],                                                        "serif": False  },
+    {"id": 2,   "name": "Magilio",                "family": "serif",          "projects": ["cards", "check-please-program", "check-please-shirt"],        "serif": True   },
+    {"id": 3,   "name": "Copperplate",            "family": "serif",          "projects": ["da-program", "shad-ticket"],                                  "serif": True   },
+    {"id": 4,   "name": "Laxero",                 "family": "sans-serif",     "projects": ["da-poster", "da-shirt"],                                      "serif": False  },
+    {"id": 5,   "name": "College",                "family": "serif",          "projects": ["xc-shirt"],                                                   "serif": True   },
+    {"id": 6,   "name": "Blackriver",             "family": "sans-serif",     "projects": ["name"],                                                       "serif": False  },
+    {"id": 7,   "name": "TaylorSwiftHandwriting", "family": "cursive",        "projects": ["1984"],                                                       "serif": False  },
+    {"id": 8,   "name": "TT Slabs",               "family": "serif",          "projects": ["ows"],                                                        "serif": False  },
+    {"id": 9,   "name": "Blackriver",             "family": "sans-serif",     "projects": ["name"],                                                       "serif": True   },
+    {"id": 10,  "name": "OffBit",                 "family": "sans-serif",     "projects": ["name"],                                                       "serif": False  },
+    {"id": 11,  "name": "Minion Pro",             "family": "serif",          "projects": ["da-ticket"],                                                  "serif": True   },
+    {"id": 12,  "name": "American Typewriter",    "family": "monospace",      "projects": ["da-ticket"],                                                       "serif": True  },
 ]
