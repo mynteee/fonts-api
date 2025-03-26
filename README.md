@@ -31,6 +31,8 @@ go to [https://mynte.pythonanywhere.com/items](https://mynte.pythonanywhere.com/
 **/sans-serif** will return all the sans-serif fonts
 ### 7. random 
 **/random** will get you a random font
+### 8. count
+**/count** will get you the amount of items in the database
 
 ## contributing
 just make a pull request and if its a cool font why not or if you do something else cool thats nice too \

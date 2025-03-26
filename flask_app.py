@@ -70,3 +70,9 @@ def get_by_family(family):
 def get_random_item():
     random_item = random.choice(database.data)  # Randomly select an item from data
     return jsonify(random_item), 200
+
+# Get the number of items in the database
+@app.route("/items/count", methods=["GET"])
+def get_item_count():
+    item_count = len(database.data)-1  # Get the count of items in the data
+    return jsonify({"count": item_count}), 200
